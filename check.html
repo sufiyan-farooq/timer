@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <input type="number" value="" placeholder="hours" max="24" min="0" class="hours"   >
+    <input type="number" value="" placeholder="minutes" max="59" min="0" class="minutes"   >
+    <input type="number" value="" placeholder="seconds" max="59" min="0" class="seconds"   >
+
+
+
+    <button id="start_btn" >Start</button>
+
+
+    <div id="timer" >
+        00:00:00
+    </div>
+
+
+    
+    <script>
+
+
+let hour = document.querySelector('.hours')
+let minutes = document.querySelector('.minutes')
+let seconds = document.querySelector('.seconds')
+let timer = document.querySelector('#timer')
+let btn = document.querySelector('#start_btn')
+
+
+btn.addEventListener('click' , ()=>{
+    var calculateseconds = Number(hour.value) * 3600 + Number(minutes.value) * 60 + Number(seconds.value);
+      let self =   setInterval(() => {
+        var hr = Math.floor(calculateseconds / 3600 ) 
+        var min = Math.floor((calculateseconds % 3600) / 60);
+        var sec = Math.floor(calculateseconds % 60);
+            timer.innerHTML  = `${hr}:${min}:${sec}`
+            calculateseconds--
+
+            if(calculateseconds > 0) {
+                calculateseconds--
+            } else {
+                clearInterval(self)
+            }
+        }, 1000);
+})
+
+
+
+
+
+
+
+
+
+// setInterval(showTime, 1000);
+
+function showTime() {
+    // var min = Math.floor(timer / 60);
+    // var seconds = timer % 60;
+    // time.innerHTML = `${min}:${seconds}`;
+    // timer--
+    // if (timer < 0){
+    //     clearInterval(setInterval)
+    //     showResult()
+    // }
+}
+
+
+    </script>
+</body>
+</html>
